@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Court Update Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Page background */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #602307, #8b5e3c);
+            /* rich wooden gradient */
+            background-attachment: fixed;
+        }
+
+        /* Chat container */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fffaf0;          /* light parchment */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            text-align: center;
+            color: #4b2e19;               /* dark brown */
+        }
+
+        p {
+            text-align: center;
+            color: #3b2b1a;
+        }
+
+        textarea {
+            width: 90%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 25px;
+            background-color: #4b2e19;   /* deep court brown */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #603a23;
+        }
+
+        .result pre {
+            background: #e15a07;
+            padding: 12px;
+            border-radius: 6px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" style="text-decoration:none; color:#634395;">← Back to Home</a>
+        <h2>⚖️ AI Court Update Chatbot</h2>
+        <p><b>Ask about important laws or get summaries of live court updates.</b></p>
+
+        <form method="post">
+            <textarea name="chat_input" rows="3" cols="80"
+                      placeholder="e.g. Right to Equality, Habeas Corpus, Freedom of Speech..."></textarea><br><br>
+            <button type="submit">Ask AI</button>
+        </form>
+
+        <div id="chat-response">
+            {% if chat_response %}
+                <div class="result">
+                    <h3>AI Response:</h3>
+                    <pre>{{ chat_response }}</pre>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

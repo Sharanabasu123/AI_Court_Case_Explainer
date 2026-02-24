@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Court Case Explainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #5c4033, #8b5e3c, #a67b5b);
+            background-attachment: fixed;
+            color: #2e1c14;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 250, 240, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #4b2e19;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px #e6d6c4;
+        }
+
+        button {
+            background: #4b2e19;
+            color: #fff;
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s;
+        }
+
+        button:hover {
+            background: #603a23;
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1rem;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #4b2e19;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="home-header">
+            <h1>⚖️ AI Court Case Explainer</h1>
+            <p>Explore legal terms, simplify documents, get live court updates, and chat with AI — perfect for judges and innovators</p>
+        </div>
+
+        
+
+        <div style="margin-top:30px;">
+            <a href="/glossary?lang={{ lang }}"><button>📚 Glossary</button></a>
+            <a href="/document?lang={{ lang }}"><button>📄 Simplify Document</button></a>
+            <a href="/live?lang={{ lang }}"><button>📺 Live Updates</button></a>
+            <a href="/chatbot?lang={{ lang }}"><button>💬 Chatbot</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Document / Paste Text</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            color: #4a148c;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #7b1fa2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4a148c;
+        }
+
+        .nav-buttons {
+            margin-top: 20px;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload Document / Paste Text</h2>
+    <form method="post" enctype="multipart/form-data">
+        <label>Upload a document:</label><br>
+        <input type="file" name="document"><br><br>
+
+        <label>Or paste plain text:</label><br>
+        <textarea name="plain_text" rows="10" cols="80"></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="nav-buttons">
+        <a href="/"><button>← Back to Home</button></a>
+        
+    </div>
+
+    {% if result %}
+        <h3>Original Text</h3>
+        <pre>{{ result.original }}</pre>
+        <h3>Simplified Text</h3>
+        <pre>{{ result.simplified }}</pre>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Court Updates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #5c4033, #8b5e3c, #a67b5b);
+            background-attachment: fixed;
+            color: #2e1c14;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 40px;
+            background: rgba(255, 250, 240, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #4b2e19;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        ul li {
+            background: #f8f2e7;
+            margin: 6px 0;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .refresh {
+            background-color: #4b2e19;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 20px auto;
+            display: inline-block;
+        }
+        .refresh:hover {
+            background-color: #603a23;
+        }
+
+        /* Back & Next buttons wrapper */
+        .nav-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .nav-buttons a {
+            background-color: #4b2e19;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .nav-buttons a:hover {
+            background-color: #603a23;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📺 Live Court Updates</h2>
+
+    <ul id="updates-list"></ul>
+
+    <button class="refresh" onclick="fetchUpdates()">🔄 Refresh Updates</button>
+
+    <!-- Back & Next buttons under Refresh -->
+    <div class="nav-buttons">
+        <a href="/chatbot">Next → Chatbot</a>
+        <a href="/">← Back to Home</a>
+    </div>
+</div>
+
+<script>
+function fetchUpdates() {
+    fetch('/court_updates')
+        .then(response => response.json())
+        .then(data => {
+            const ul = document.getElementById('updates-list');
+            ul.innerHTML = '';
+            data.forEach(update => {
+                const li = document.createElement('li');
+                li.textContent = update;
+                ul.appendChild(li);
+            });
+        });
+}
+window.onload = fetchUpdates;
+</script>
+
+</body>
+</html>

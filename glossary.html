@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Legal Term Glossary Lookup</title>
+    <style>
+        body {
+            background-color: #e6f2ff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 30px;
+            color: #333;
+        }
+        h2 {
+            color: #003366;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d99;
+        }
+        .glossary {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #0066cc;
+            border-radius: 6px;
+            max-width: 500px;
+            word-wrap: break-word;
+        }
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Legal Term Glossary Lookup</h2>
+    <form method="post">
+        <label>Enter a legal term:</label>
+        <input type="text" name="legal_term" required>
+
+        <label>Select language:</label>
+        <select name="language" required>
+            <option value="en">English</option>
+            
+        </select>
+
+        <button type="submit">Get Definition</button>
+    </form>
+
+    <div class="glossary">
+        {% if glossary_term and glossary_def %}
+            <h3>Glossary</h3>
+            <p><strong>{{ glossary_term }}</strong>: {{ glossary_def }}</p>
+        {% elif glossary_term %}
+            <h3>Glossary</h3>
+            <p>No definition found for <strong>{{ glossary_term }}</strong> in selected language.</p>
+        {% endif %}
+    </div>
+
+    <a href="/" class="back-link">← Back to Home</a>
+</body>
+</html>
